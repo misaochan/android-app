@@ -23,19 +23,19 @@
             </intent-filter>
         </activity>
         <activity
-			android:name=".CoursesActivity"
+			android:name="com.lim.json.CoursesActivity"
 			android:label="Courses" >
 		</activity>
 		<activity
-			android:name=".SeminarsActivity"
+			android:name="com.lim.rss.SeminarsActivity"
 			android:label="Seminars" >
 		</activity>
 		<activity
-			android:name=".EventsActivity"
+			android:name="com.lim.rss.EventsActivity"
 			android:label="Events" >
 		</activity>
 		<activity
-			android:name=".NewsActivity"
+		    android:name="com.lim.rss.NewsActivity"
 			android:label="News" >
 		</activity>
     </application>

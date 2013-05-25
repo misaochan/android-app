@@ -1,4 +1,4 @@
-package com.lim.assignment;
+package com.lim.json;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +18,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.lim.assignment.R;
+import com.lim.assignment.R.id;
+import com.lim.assignment.R.layout;
 
 import android.app.ListActivity;
 import android.os.AsyncTask;

@@ -1,5 +1,10 @@
 package com.lim.assignment;
 
+import com.lim.json.CoursesActivity;
+import com.lim.rss.EventsActivity;
+import com.lim.rss.NewsActivity;
+import com.lim.rss.SeminarsActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

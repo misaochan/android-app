@@ -1,6 +1,10 @@
-package com.lim.assignment;
+package com.lim.rss;
 
 import java.util.List;
+
+import com.lim.assignment.R;
+import com.lim.assignment.R.id;
+import com.lim.assignment.R.layout;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -10,18 +14,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class NewsActivity extends Activity {
+public class SeminarsActivity extends Activity {
 
-	private NewsActivity local;
+	private SeminarsActivity local;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_news);
+		setContentView(R.layout.activity_seminar);
 		local = this;
 		
 		GetRSSDataTask task = new GetRSSDataTask();
-		task.execute("http://www.cs.auckland.ac.nz/uoa/home/template/news_feed.rss?category=science_cs_news");
+		task.execute("http://www.cs.auckland.ac.nz/uoa/home/template/events_feed.rss?category=seminars/");
 		
 		// Debug the thread name
 		//Log.d("MyRssReader", Thread.currentThread().getName());
@@ -36,8 +40,6 @@ public class NewsActivity extends Activity {
 			
 			try {
 				RssReader rssReader = new RssReader(urls[0]);
-			
-				// Parse RSS, get items
 				return rssReader.getItems();
 			
 			} catch (Exception e) {
@@ -50,15 +52,10 @@ public class NewsActivity extends Activity {
 		@Override
 		protected void onPostExecute(List<RssItem> result) {
 			
-			// Get a ListView from main view
 			ListView itcItems = (ListView) findViewById(R.id.rssList);
-						
-			// Create a list adapter
 			ArrayAdapter<RssItem> adapter = new ArrayAdapter<RssItem>(local,android.R.layout.simple_list_item_1, result);
-			// Set list adapter for the ListView
 			itcItems.setAdapter(adapter);
-						
-			// Set list view item click listener
+			
 			itcItems.setOnItemClickListener(new ListListener(result, local));
 		}
 	}

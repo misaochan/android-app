@@ -1,4 +1,4 @@
-package com.lim.assignment;
+package com.lim.rss;
 
 import java.util.ArrayList;
 import java.util.List;

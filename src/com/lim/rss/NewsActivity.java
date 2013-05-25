@@ -1,6 +1,10 @@
-package com.lim.assignment;
+package com.lim.rss;
 
 import java.util.List;
+
+import com.lim.assignment.R;
+import com.lim.assignment.R.id;
+import com.lim.assignment.R.layout;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -10,18 +14,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class EventsActivity extends Activity {
+public class NewsActivity extends Activity {
 
-	private EventsActivity local;
+	private NewsActivity local;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_events);
+		setContentView(R.layout.activity_news);
 		local = this;
 		
 		GetRSSDataTask task = new GetRSSDataTask();
-		task.execute("http://www.cs.auckland.ac.nz/uoa/home/template/events_feed.rss?category=other_events");
+		task.execute("http://www.cs.auckland.ac.nz/uoa/home/template/news_feed.rss?category=science_cs_news");
 		
 		// Debug the thread name
 		//Log.d("MyRssReader", Thread.currentThread().getName());
