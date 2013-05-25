@@ -36,8 +36,6 @@ public class SeminarsActivity extends Activity {
 			
 			try {
 				RssReader rssReader = new RssReader(urls[0]);
-			
-				// Parse RSS, get items
 				return rssReader.getItems();
 			
 			} catch (Exception e) {
@@ -50,15 +48,10 @@ public class SeminarsActivity extends Activity {
 		@Override
 		protected void onPostExecute(List<RssItem> result) {
 			
-			// Get a ListView from main view
 			ListView itcItems = (ListView) findViewById(R.id.rssList);
-						
-			// Create a list adapter
 			ArrayAdapter<RssItem> adapter = new ArrayAdapter<RssItem>(local,android.R.layout.simple_list_item_1, result);
-			// Set list adapter for the ListView
 			itcItems.setAdapter(adapter);
-						
-			// Set list view item click listener
+			
 			itcItems.setOnItemClickListener(new ListListener(result, local));
 		}
 	}

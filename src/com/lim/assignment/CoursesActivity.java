@@ -30,63 +30,26 @@ import android.widget.SimpleAdapter;
 public class CoursesActivity extends ListActivity{
 
 		ArrayList<HashMap<String, String>> courseList = new ArrayList<HashMap<String, String>>();
-        static InputStream is = null;
+        //static InputStream is = null;
         private static String url = "http://redsox.tcs.auckland.ac.nz/734A/CSService.svc/courses";
         JSONArray courses = null;
         static JSONObject jObj = null;
-        static String json = "";
-
+        //static String json = "";
+        private String json = "";
+        
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_courses);
-            new Task().execute();
+            new GetCoursesTask().execute();
         }
 
-        private class Task extends AsyncTask<URL, Void, JSONObject> {
-        	
-        	protected void JSONparser(String url) {
-        		try {
-                    DefaultHttpClient httpClient = new DefaultHttpClient();
-                    HttpGet httpGet = new HttpGet(url);
-                    HttpResponse httpResponse = httpClient.execute(httpGet);
-                    HttpEntity httpEntity = httpResponse.getEntity();
-                    is = httpEntity.getContent();
-        		}
-                catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } 
-        		catch (ClientProtocolException e) {
-                    e.printStackTrace();
-                } 
-        		catch (IOException e) {
-                    e.printStackTrace();
-                }
+        private class GetCoursesTask extends AsyncTask<URL, Void, JSONObject> {
         		
-        		try {
-        			InputStream inputStream = is;
-        			GZIPInputStream input = new GZIPInputStream(inputStream);
-        			InputStreamReader reader = new InputStreamReader(input);
-        			BufferedReader in = new BufferedReader(reader);
-        			StringBuilder sb = new StringBuilder();
-        			String line = null;
-        			
-        			while ((line = in.readLine()) != null) {
-        				sb.append(line);
-        			}
-        			
-        			is.close();
-        			json = sb.toString();
-        		} 
-        		
-        		catch (Exception e) {
-        			Log.e("Buffer Error", "Error converting result " + e.toString());
-            	}
-        	}
-        	
             @Override
             protected JSONObject doInBackground(URL... urls) {
-               	JSONparser(url);
+               	JSONparser jsonParser = new JSONparser(url);
+               	json = jsonParser.parse();
                	//convert parsed string to a JSON object
             	try {
             		courses = new JSONArray(json);
