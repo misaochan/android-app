@@ -1,6 +1,7 @@
 package com.lim.assignment;
 
 import com.lim.json.CoursesActivity;
+import com.lim.json.StaffActivity;
 import com.lim.rss.EventsActivity;
 import com.lim.rss.NewsActivity;
 import com.lim.rss.SeminarsActivity;
@@ -48,6 +49,14 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				Intent NewsIntent = new Intent(arg0.getContext(), NewsActivity.class);
 				startActivityForResult(NewsIntent, 0);
+			}
+		});
+		
+		Button staffButton = (Button) findViewById(R.id.staff_button);
+		staffButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				Intent StaffIntent = new Intent(arg0.getContext(), StaffActivity.class);
+				startActivityForResult(StaffIntent, 0);
 			}
 		});
 	

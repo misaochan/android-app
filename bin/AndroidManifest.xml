@@ -38,6 +38,10 @@
 		    android:name="com.lim.rss.NewsActivity"
 			android:label="News" >
 		</activity>
+				<activity
+		    android:name="com.lim.json.StaffActivity"
+			android:label="Staff" >
+		</activity>
     </application>
 	
 </manifest>
