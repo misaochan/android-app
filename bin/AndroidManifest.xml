@@ -42,6 +42,10 @@
 		    android:name="com.lim.json.StaffActivity"
 			android:label="Staff" >
 		</activity>
+		<activity
+		    android:name="com.lim.json.StaffListListener"
+			android:label="StaffListListener" >
+		</activity>
     </application>
 	
 </manifest>

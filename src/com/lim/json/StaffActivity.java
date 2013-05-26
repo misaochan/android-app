@@ -29,12 +29,16 @@ public class StaffActivity extends ListActivity {
     static JSONObject jObj = null;
     private String json = "";
     ArrayList<String> items = new ArrayList<String>();
+    private StaffActivity local;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff);
+        local = this;
+        
         new GetStaffTask().execute();
+        
     }
 
     private class GetStaffTask extends AsyncTask<URL, Void, JSONObject> {
@@ -66,7 +70,8 @@ public class StaffActivity extends ListActivity {
         	
         	ListView myListView = (ListView)findViewById(android.R.id.list);
             myListView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, items));       	
-            //setListAdapter(new ArrayAdapter<String>(this,R.layout.list_black_text,R.id.list_content, listItems));
+            
+            myListView.setOnItemClickListener(new StaffListListener(items, local));
         }
     }
 }

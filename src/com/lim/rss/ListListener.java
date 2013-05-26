@@ -12,9 +12,6 @@ import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * Class implements a list listener
- * 
- * @author ITCuties
- *
  */
 public class ListListener implements OnItemClickListener {
 
