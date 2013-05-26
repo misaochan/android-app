@@ -50,7 +50,9 @@ public class StaffActivity extends ListActivity {
         		for (int i = 0; i < staff.length(); i++) {
         			JSONObject p = staff.getJSONObject(i);
         			String map = p.getString("uPIField");
-                    items.add(map);         			
+                    items.add(map);
+                    
+                    //map variable contains the UPI needed. Append to http://www.cs.auckland.ac.nz/our_staff/vcard.php?upi=
         		}
         	} 
         	catch (JSONException e) {
@@ -63,7 +65,8 @@ public class StaffActivity extends ListActivity {
         protected void onPostExecute(JSONObject json) {
         	
         	ListView myListView = (ListView)findViewById(android.R.id.list);
-            myListView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, items));       	
+            myListView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, items));       	
+            //setListAdapter(new ArrayAdapter<String>(this,R.layout.list_black_text,R.id.list_content, listItems));
         }
     }
 }
