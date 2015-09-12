@@ -1,11 +1,20 @@
 package com.lim.json;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.database.Cursor;
 import android.net.Uri;
+import android.provider.ContactsContract;
+import android.provider.ContactsContract.Contacts;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,7 +46,9 @@ public class StaffListListener implements OnItemClickListener {
 		b.appendQueryParameter("upi", items.get(pos));
 		Uri uri = b.build();
 		i.setData(uri);
-
+		
+		//insert content resolver here
+		
 		Log.d("URL of staff", uri.toString());
 		activity.startActivity(i);		
 	}
